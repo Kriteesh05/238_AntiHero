@@ -1,0 +1,59 @@
+ 
+// Get reference to accelerometer
+import java.util.Random;
+
+public class StressLevelMeasurement {
+    public static void main(String[] args) {
+        // Simulated muscle contraction values
+        double minContraction = 0.0;
+        double maxContraction = 100.0;
+
+        // Generate a random muscle contraction value
+        double muscleContraction = getRandomContraction(minContraction, maxContraction);
+
+        // Calculate the stress level based on muscle contraction
+        double stressLevel = calculateStressLevel(muscleContraction);
+
+        // Display the stress level
+        System.out.println("Muscle Contraction: " + muscleContraction);
+        System.out.println("Stress Level: " + stressLevel);
+    }
+    
+
+    // Generates a random muscle contraction value
+    public static double getRandomContraction(double min, double max)
+    {
+        Random random = new Random();
+        return min + (max - min) * random.nextDouble();
+            
+        
+    }
+    // Calculates the stress level based on muscle contraction
+      public static double calculateStressLevel(double muscleContraction) {
+      // Define the stress level thresholds
+       double lowThreshold = 30.0;
+       double highThreshold = 70.0;
+       // Check if the muscle contraction is within the low stress level range
+    if (muscleContraction < lowThreshold) {
+        return 0.0; // Low stress level
+    }
+
+    // Check if the muscle contraction is within the high stress level range
+    if (muscleContraction > highThreshold) {
+        return 100.0; // High stress level
+    }
+
+    // Calculate the stress level based on the muscle contraction
+    return (muscleContraction - lowThreshold) / (highThreshold - lowThreshold) * 100.0;
+}
+    }
+      
+    
+    
+
+
+
+
+
+
+
